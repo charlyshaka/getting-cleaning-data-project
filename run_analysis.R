@@ -67,7 +67,7 @@ nbActivities <- length(activityLabels[,1])
 nbCols <- dim(merged)[2]
 result <- merged[1:(nbSubjects*nbActivities), ]
 
-# TODO try to use functional programming functions (apply...)
+# TODO try to use functional programming functions (apply or similar...)
 row = 1
 for (s in 1:nbSubjects) {
   for (a in 1:nbActivities) {
