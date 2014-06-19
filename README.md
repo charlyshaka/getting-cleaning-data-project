@@ -43,19 +43,4 @@ read.table('average_data')
 
 ## Code Book
 
-# Data source
-
-https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
-
-For a description of the data source, check features_info.txt contained in the data source zip file.
-
-For information about the experiment and the way data was collected, please read README.txt contained in the data source zip file.
-
-# Variables
-
-All the column names are described in README.txt data source zip file, except for the following columns that were added:
-
-* subjectnumber: the string that corresponds to the subject of the experiment
-* activity: a string that represent the activity of the subject while collecting data points
-
-Because run_analysis was coded without hardcoding any column names, here are the rules applied by run_analysis.R in order to get tiday column names: it removes "(" and ")" and lowercase original feature names.
+Check [here](codeBook.md).

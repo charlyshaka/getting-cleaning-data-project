@@ -1,3 +1,7 @@
+# make sure you have plyr installed. You can run the following command if not: 
+# install.packages("plyr")
+library(plyr)
+
 # change me if needed - this folder is created when unzipping data source into the repo
 dataFolder = "UCI HAR Dataset/"
 
@@ -60,22 +64,8 @@ merged <- cbind(SubjectData, YData, XData)
 write.table(merged, "tidy_data.txt")
 
 # #5: "Creates a 2nd data set with the average of each variable for each activity and each subject."
+# if we decide to move or add non-numeric column
+excludedColumns = which(names(merged) %in% c("subjectnumber", "activity"))
+result <- ddply(merged, .(subjectnumber, activity), .fun=function(x){ colMeans(x[,-excludedColumns]) })
 
-subjects <- unique(SubjectData)[,1]
-nbSubjects <- length(subjects)
-nbActivities <- length(activityLabels[,1])
-nbCols <- dim(merged)[2]
-result <- merged[1:(nbSubjects*nbActivities), ]
-
-# TODO try to use functional programming functions (apply or similar...)
-row = 1
-for (s in 1:nbSubjects) {
-  for (a in 1:nbActivities) {
-    result[row, 1] = subjects[s]
-    result[row, 2] = activityLabels[a, 2]
-    tmp <- merged[merged$subject==s & merged$activity==activityLabels[a, 2], ]
-    result[row, 3:nbCols] <- colMeans(tmp[, 3:nbCols])
-    row = row+1
-  }
-}
 write.table(result, "average_data.txt")
