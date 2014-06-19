@@ -15,6 +15,8 @@ All the column names are described in README.txt data source zip file, except fo
 
 Because run_analysis was coded without hardcoding any column names or positions, here are the rules applied by run_analysis.R in order to get clean column names: it removes "(" and ")" and lowercase original feature names.
 
+For example, tBodyAcc-mean()-X` becomes tbodyacc-mean-x`.
+
 # Output
 
 * tidy_data.txt: a space-delimited value file that contains mean and standard deviation for each measurements from the train and test data,
